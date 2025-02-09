@@ -1,0 +1,439 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement
+Rule 2     program -> statement program
+Rule 3     program -> empty
+Rule 4     statement -> declaration
+Rule 5     statement -> assignment
+Rule 6     statement -> increment
+Rule 7     statement -> decrement
+Rule 8     statement -> do_while
+Rule 9     declaration -> INT ID SEMICOLON
+Rule 10    assignment -> ID ASSIGN expression SEMICOLON
+Rule 11    increment -> ID INCREMENT SEMICOLON
+Rule 12    decrement -> ID DECREMENT SEMICOLON
+Rule 13    expression -> ID
+Rule 14    expression -> NUMBER
+Rule 15    expression -> ID LESS NUMBER
+Rule 16    do_while -> DO LBRACE program RBRACE WHILE LPAREN expression RPAREN SEMICOLON
+Rule 17    empty -> <empty>
+
+Terminals, with rules where they appear
+
+ASSIGN               : 10
+DECREMENT            : 12
+DO                   : 16
+ID                   : 9 10 11 12 13 15
+INCREMENT            : 11
+INT                  : 9
+LBRACE               : 16
+LESS                 : 15
+LPAREN               : 16
+NUMBER               : 14 15
+RBRACE               : 16
+RPAREN               : 16
+SEMICOLON            : 9 10 11 12 16
+WHILE                : 16
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignment           : 5
+declaration          : 4
+decrement            : 7
+do_while             : 8
+empty                : 3
+expression           : 10 16
+increment            : 6
+program              : 2 16 0
+statement            : 1 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement
+    (2) program -> . statement program
+    (3) program -> . empty
+    (4) statement -> . declaration
+    (5) statement -> . assignment
+    (6) statement -> . increment
+    (7) statement -> . decrement
+    (8) statement -> . do_while
+    (17) empty -> .
+    (9) declaration -> . INT ID SEMICOLON
+    (10) assignment -> . ID ASSIGN expression SEMICOLON
+    (11) increment -> . ID INCREMENT SEMICOLON
+    (12) decrement -> . ID DECREMENT SEMICOLON
+    (16) do_while -> . DO LBRACE program RBRACE WHILE LPAREN expression RPAREN SEMICOLON
+
+    $end            reduce using rule 17 (empty -> .)
+    INT             shift and go to state 9
+    ID              shift and go to state 10
+    DO              shift and go to state 11
+
+    program                        shift and go to state 1
+    statement                      shift and go to state 2
+    empty                          shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    increment                      shift and go to state 6
+    decrement                      shift and go to state 7
+    do_while                       shift and go to state 8
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement .
+    (2) program -> statement . program
+    (1) program -> . statement
+    (2) program -> . statement program
+    (3) program -> . empty
+    (4) statement -> . declaration
+    (5) statement -> . assignment
+    (6) statement -> . increment
+    (7) statement -> . decrement
+    (8) statement -> . do_while
+    (17) empty -> .
+    (9) declaration -> . INT ID SEMICOLON
+    (10) assignment -> . ID ASSIGN expression SEMICOLON
+    (11) increment -> . ID INCREMENT SEMICOLON
+    (12) decrement -> . ID DECREMENT SEMICOLON
+    (16) do_while -> . DO LBRACE program RBRACE WHILE LPAREN expression RPAREN SEMICOLON
+
+  ! reduce/reduce conflict for $end resolved using rule 1 (program -> statement .)
+  ! reduce/reduce conflict for RBRACE resolved using rule 1 (program -> statement .)
+    $end            reduce using rule 1 (program -> statement .)
+    RBRACE          reduce using rule 1 (program -> statement .)
+    INT             shift and go to state 9
+    ID              shift and go to state 10
+    DO              shift and go to state 11
+
+  ! $end            [ reduce using rule 17 (empty -> .) ]
+  ! RBRACE          [ reduce using rule 17 (empty -> .) ]
+
+    statement                      shift and go to state 2
+    program                        shift and go to state 12
+    empty                          shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    increment                      shift and go to state 6
+    decrement                      shift and go to state 7
+    do_while                       shift and go to state 8
+
+state 3
+
+    (3) program -> empty .
+
+    $end            reduce using rule 3 (program -> empty .)
+    RBRACE          reduce using rule 3 (program -> empty .)
+
+
+state 4
+
+    (4) statement -> declaration .
+
+    INT             reduce using rule 4 (statement -> declaration .)
+    ID              reduce using rule 4 (statement -> declaration .)
+    DO              reduce using rule 4 (statement -> declaration .)
+    $end            reduce using rule 4 (statement -> declaration .)
+    RBRACE          reduce using rule 4 (statement -> declaration .)
+
+
+state 5
+
+    (5) statement -> assignment .
+
+    INT             reduce using rule 5 (statement -> assignment .)
+    ID              reduce using rule 5 (statement -> assignment .)
+    DO              reduce using rule 5 (statement -> assignment .)
+    $end            reduce using rule 5 (statement -> assignment .)
+    RBRACE          reduce using rule 5 (statement -> assignment .)
+
+
+state 6
+
+    (6) statement -> increment .
+
+    INT             reduce using rule 6 (statement -> increment .)
+    ID              reduce using rule 6 (statement -> increment .)
+    DO              reduce using rule 6 (statement -> increment .)
+    $end            reduce using rule 6 (statement -> increment .)
+    RBRACE          reduce using rule 6 (statement -> increment .)
+
+
+state 7
+
+    (7) statement -> decrement .
+
+    INT             reduce using rule 7 (statement -> decrement .)
+    ID              reduce using rule 7 (statement -> decrement .)
+    DO              reduce using rule 7 (statement -> decrement .)
+    $end            reduce using rule 7 (statement -> decrement .)
+    RBRACE          reduce using rule 7 (statement -> decrement .)
+
+
+state 8
+
+    (8) statement -> do_while .
+
+    INT             reduce using rule 8 (statement -> do_while .)
+    ID              reduce using rule 8 (statement -> do_while .)
+    DO              reduce using rule 8 (statement -> do_while .)
+    $end            reduce using rule 8 (statement -> do_while .)
+    RBRACE          reduce using rule 8 (statement -> do_while .)
+
+
+state 9
+
+    (9) declaration -> INT . ID SEMICOLON
+
+    ID              shift and go to state 13
+
+
+state 10
+
+    (10) assignment -> ID . ASSIGN expression SEMICOLON
+    (11) increment -> ID . INCREMENT SEMICOLON
+    (12) decrement -> ID . DECREMENT SEMICOLON
+
+    ASSIGN          shift and go to state 14
+    INCREMENT       shift and go to state 15
+    DECREMENT       shift and go to state 16
+
+
+state 11
+
+    (16) do_while -> DO . LBRACE program RBRACE WHILE LPAREN expression RPAREN SEMICOLON
+
+    LBRACE          shift and go to state 17
+
+
+state 12
+
+    (2) program -> statement program .
+
+    $end            reduce using rule 2 (program -> statement program .)
+    RBRACE          reduce using rule 2 (program -> statement program .)
+
+
+state 13
+
+    (9) declaration -> INT ID . SEMICOLON
+
+    SEMICOLON       shift and go to state 18
+
+
+state 14
+
+    (10) assignment -> ID ASSIGN . expression SEMICOLON
+    (13) expression -> . ID
+    (14) expression -> . NUMBER
+    (15) expression -> . ID LESS NUMBER
+
+    ID              shift and go to state 19
+    NUMBER          shift and go to state 21
+
+    expression                     shift and go to state 20
+
+state 15
+
+    (11) increment -> ID INCREMENT . SEMICOLON
+
+    SEMICOLON       shift and go to state 22
+
+
+state 16
+
+    (12) decrement -> ID DECREMENT . SEMICOLON
+
+    SEMICOLON       shift and go to state 23
+
+
+state 17
+
+    (16) do_while -> DO LBRACE . program RBRACE WHILE LPAREN expression RPAREN SEMICOLON
+    (1) program -> . statement
+    (2) program -> . statement program
+    (3) program -> . empty
+    (4) statement -> . declaration
+    (5) statement -> . assignment
+    (6) statement -> . increment
+    (7) statement -> . decrement
+    (8) statement -> . do_while
+    (17) empty -> .
+    (9) declaration -> . INT ID SEMICOLON
+    (10) assignment -> . ID ASSIGN expression SEMICOLON
+    (11) increment -> . ID INCREMENT SEMICOLON
+    (12) decrement -> . ID DECREMENT SEMICOLON
+    (16) do_while -> . DO LBRACE program RBRACE WHILE LPAREN expression RPAREN SEMICOLON
+
+    RBRACE          reduce using rule 17 (empty -> .)
+    INT             shift and go to state 9
+    ID              shift and go to state 10
+    DO              shift and go to state 11
+
+    program                        shift and go to state 24
+    statement                      shift and go to state 2
+    empty                          shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    increment                      shift and go to state 6
+    decrement                      shift and go to state 7
+    do_while                       shift and go to state 8
+
+state 18
+
+    (9) declaration -> INT ID SEMICOLON .
+
+    INT             reduce using rule 9 (declaration -> INT ID SEMICOLON .)
+    ID              reduce using rule 9 (declaration -> INT ID SEMICOLON .)
+    DO              reduce using rule 9 (declaration -> INT ID SEMICOLON .)
+    $end            reduce using rule 9 (declaration -> INT ID SEMICOLON .)
+    RBRACE          reduce using rule 9 (declaration -> INT ID SEMICOLON .)
+
+
+state 19
+
+    (13) expression -> ID .
+    (15) expression -> ID . LESS NUMBER
+
+    SEMICOLON       reduce using rule 13 (expression -> ID .)
+    RPAREN          reduce using rule 13 (expression -> ID .)
+    LESS            shift and go to state 25
+
+
+state 20
+
+    (10) assignment -> ID ASSIGN expression . SEMICOLON
+
+    SEMICOLON       shift and go to state 26
+
+
+state 21
+
+    (14) expression -> NUMBER .
+
+    SEMICOLON       reduce using rule 14 (expression -> NUMBER .)
+    RPAREN          reduce using rule 14 (expression -> NUMBER .)
+
+
+state 22
+
+    (11) increment -> ID INCREMENT SEMICOLON .
+
+    INT             reduce using rule 11 (increment -> ID INCREMENT SEMICOLON .)
+    ID              reduce using rule 11 (increment -> ID INCREMENT SEMICOLON .)
+    DO              reduce using rule 11 (increment -> ID INCREMENT SEMICOLON .)
+    $end            reduce using rule 11 (increment -> ID INCREMENT SEMICOLON .)
+    RBRACE          reduce using rule 11 (increment -> ID INCREMENT SEMICOLON .)
+
+
+state 23
+
+    (12) decrement -> ID DECREMENT SEMICOLON .
+
+    INT             reduce using rule 12 (decrement -> ID DECREMENT SEMICOLON .)
+    ID              reduce using rule 12 (decrement -> ID DECREMENT SEMICOLON .)
+    DO              reduce using rule 12 (decrement -> ID DECREMENT SEMICOLON .)
+    $end            reduce using rule 12 (decrement -> ID DECREMENT SEMICOLON .)
+    RBRACE          reduce using rule 12 (decrement -> ID DECREMENT SEMICOLON .)
+
+
+state 24
+
+    (16) do_while -> DO LBRACE program . RBRACE WHILE LPAREN expression RPAREN SEMICOLON
+
+    RBRACE          shift and go to state 27
+
+
+state 25
+
+    (15) expression -> ID LESS . NUMBER
+
+    NUMBER          shift and go to state 28
+
+
+state 26
+
+    (10) assignment -> ID ASSIGN expression SEMICOLON .
+
+    INT             reduce using rule 10 (assignment -> ID ASSIGN expression SEMICOLON .)
+    ID              reduce using rule 10 (assignment -> ID ASSIGN expression SEMICOLON .)
+    DO              reduce using rule 10 (assignment -> ID ASSIGN expression SEMICOLON .)
+    $end            reduce using rule 10 (assignment -> ID ASSIGN expression SEMICOLON .)
+    RBRACE          reduce using rule 10 (assignment -> ID ASSIGN expression SEMICOLON .)
+
+
+state 27
+
+    (16) do_while -> DO LBRACE program RBRACE . WHILE LPAREN expression RPAREN SEMICOLON
+
+    WHILE           shift and go to state 29
+
+
+state 28
+
+    (15) expression -> ID LESS NUMBER .
+
+    SEMICOLON       reduce using rule 15 (expression -> ID LESS NUMBER .)
+    RPAREN          reduce using rule 15 (expression -> ID LESS NUMBER .)
+
+
+state 29
+
+    (16) do_while -> DO LBRACE program RBRACE WHILE . LPAREN expression RPAREN SEMICOLON
+
+    LPAREN          shift and go to state 30
+
+
+state 30
+
+    (16) do_while -> DO LBRACE program RBRACE WHILE LPAREN . expression RPAREN SEMICOLON
+    (13) expression -> . ID
+    (14) expression -> . NUMBER
+    (15) expression -> . ID LESS NUMBER
+
+    ID              shift and go to state 19
+    NUMBER          shift and go to state 21
+
+    expression                     shift and go to state 31
+
+state 31
+
+    (16) do_while -> DO LBRACE program RBRACE WHILE LPAREN expression . RPAREN SEMICOLON
+
+    RPAREN          shift and go to state 32
+
+
+state 32
+
+    (16) do_while -> DO LBRACE program RBRACE WHILE LPAREN expression RPAREN . SEMICOLON
+
+    SEMICOLON       shift and go to state 33
+
+
+state 33
+
+    (16) do_while -> DO LBRACE program RBRACE WHILE LPAREN expression RPAREN SEMICOLON .
+
+    INT             reduce using rule 16 (do_while -> DO LBRACE program RBRACE WHILE LPAREN expression RPAREN SEMICOLON .)
+    ID              reduce using rule 16 (do_while -> DO LBRACE program RBRACE WHILE LPAREN expression RPAREN SEMICOLON .)
+    DO              reduce using rule 16 (do_while -> DO LBRACE program RBRACE WHILE LPAREN expression RPAREN SEMICOLON .)
+    $end            reduce using rule 16 (do_while -> DO LBRACE program RBRACE WHILE LPAREN expression RPAREN SEMICOLON .)
+    RBRACE          reduce using rule 16 (do_while -> DO LBRACE program RBRACE WHILE LPAREN expression RPAREN SEMICOLON .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: reduce/reduce conflict in state 2 resolved using rule (program -> statement)
+WARNING: rejected rule (empty -> <empty>) in state 2
